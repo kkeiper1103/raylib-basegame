@@ -25,7 +25,7 @@ Game::~Game() {
     //--------------------------------------------------------------------------------------
 }
 
-void Game::run() {
+int Game::run() {
     while (!WindowShouldClose())    // Detect window close button or ESC key
     {
         // Update
@@ -44,4 +44,6 @@ void Game::run() {
         EndDrawing();
         //----------------------------------------------------------------------------------
     }
+
+    return RUN_SUCCESS;
 }

@@ -6,7 +6,5 @@ int main(int argc, char* argv[]) {
 
     Game app(800, 450, "Raylib Base Game");
 
-    app.run();
-
-    return 0;
+    return app.run();
 }

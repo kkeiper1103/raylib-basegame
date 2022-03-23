@@ -9,12 +9,14 @@
 
 #include "raylib.h"
 
+typedef enum RunStatus { RUN_SUCCESS = 0, RUN_FAILURE } RunStatus;
+
 class Game {
 public:
     Game(int screenWidth, int screenHeight, const std::string& title, bool fullscreen = false);
     ~Game();
 
-    void run();
+    int run();
 };
 
 
