@@ -18,7 +18,7 @@ add_executable(${EXECUTABLE} main.cpp
 
         app/Game.cpp
 
-        app/States/IntroState.cpp app/States/IntroState.h system/Entities/BaseEntity.cpp system/Entities/BaseEntity.h app/Entities/Player.cpp app/Entities/Player.h)
+        app/States/IntroState.cpp app/States/IntroState.h system/Entities/BaseEntity.cpp system/Entities/BaseEntity.h app/Entities/Player.cpp app/Entities/Player.h system/States/StateMachine.cpp system/States/StateMachine.h app/States/PlayState.cpp app/States/PlayState.h)
 
 # add the game's source code (app folder like laravel) to the include path
 target_include_directories(${EXECUTABLE} PRIVATE app)

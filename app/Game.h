@@ -5,17 +5,26 @@
 #ifndef RAYLIBBASEGAME_GAME_H
 #define RAYLIBBASEGAME_GAME_H
 
+#include <stdexcept>
 #include <string>
+
 #include "raylib.h"
 
-#include "States/IntroState.h"
+#include "system/States/StateMachine.h"
+
+#include "app/States/IntroState.h"
+#include "app/States/PlayState.h"
 
 namespace App {
+    using namespace System::States;
+
 
     typedef enum RunStatus { RUN_SUCCESS = 0, RUN_FAILURE } RunStatus;
-    typedef enum GameState { INTRO = 0, MENU, PLAYING, PAUSED, FINISHED } GameState;
 
     class Game {
+    protected:
+        StateMachine stateMachine;
+
     public:
         Game(int screenWidth, int screenHeight, const std::string& title, bool fullscreen = false);
         ~Game();

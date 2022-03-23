@@ -16,6 +16,11 @@ Game::Game(int screenWidth, int screenHeight, const std::string &title, bool ful
 
 
     SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
+
+
+    stateMachine.set(STATE_INTRO, std::make_unique<States::IntroState>());
+    stateMachine.set(STATE_PLAYING, std::make_unique<States::PlayState>());
+    stateMachine.change(STATE_INTRO);
 }
 
 Game::~Game() {
@@ -27,26 +32,32 @@ Game::~Game() {
 }
 
 int Game::run() {
-    States::IntroState introState;
+    RunStatus status = RunStatus::RUN_SUCCESS;
 
-    while (!WindowShouldClose())    // Detect window close button or ESC key
-    {
-        // Update
-        //----------------------------------------------------------------------------------
-        // TODO: Update your variables here
-        //----------------------------------------------------------------------------------
-        introState.update();
-
-
-        // Draw
-        //----------------------------------------------------------------------------------
-        BeginDrawing();
+    try {
+        while (!WindowShouldClose())    // Detect window close button or ESC key
         {
-            introState.render();
+            // Update
+            //----------------------------------------------------------------------------------
+            // TODO: Update your variables here
+            //----------------------------------------------------------------------------------
+            stateMachine.update();
+
+
+            // Draw
+            //----------------------------------------------------------------------------------
+            BeginDrawing();
+            {
+                stateMachine.render();
+            }
+            EndDrawing();
+            //----------------------------------------------------------------------------------
         }
-        EndDrawing();
-        //----------------------------------------------------------------------------------
+    }
+    catch(const std::exception& e) {
+        TraceLog(LOG_ERROR, e.what());
+        status = RUN_FAILURE;
     }
 
-    return RUN_SUCCESS;
+    return status;
 }
