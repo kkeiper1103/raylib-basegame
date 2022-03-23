@@ -5,7 +5,3 @@
 #include "BaseState.h"
 
 using namespace System::States;
-
-void BaseState::init() {
-
-}
