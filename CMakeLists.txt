@@ -9,7 +9,7 @@ set(CMAKE_CXX_STANDARD 20)
 add_subdirectory(vendor/raylib)
 
 
-add_executable(${EXECUTABLE} main.cpp)
+add_executable(${EXECUTABLE} main.cpp app/Game.cpp)
 
 # add the game's source code (app folder like laravel) to the include path
 target_include_directories(${EXECUTABLE} PRIVATE app)
