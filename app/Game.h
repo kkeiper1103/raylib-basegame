@@ -6,18 +6,22 @@
 #define RAYLIBBASEGAME_GAME_H
 
 #include <string>
-
 #include "raylib.h"
 
-typedef enum RunStatus { RUN_SUCCESS = 0, RUN_FAILURE } RunStatus;
+#include "States/IntroState.h"
 
-class Game {
-public:
-    Game(int screenWidth, int screenHeight, const std::string& title, bool fullscreen = false);
-    ~Game();
+namespace App {
 
-    int run();
-};
+    typedef enum RunStatus { RUN_SUCCESS = 0, RUN_FAILURE } RunStatus;
+    typedef enum GameState { INTRO = 0, MENU, PLAYING, PAUSED, FINISHED } GameState;
 
+    class Game {
+    public:
+        Game(int screenWidth, int screenHeight, const std::string& title, bool fullscreen = false);
+        ~Game();
+
+        int run();
+    };
+}
 
 #endif //RAYLIBBASEGAME_GAME_H
