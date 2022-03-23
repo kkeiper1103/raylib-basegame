@@ -8,6 +8,9 @@ set(CMAKE_CXX_STANDARD 20)
 # add raylib to the project
 add_subdirectory(vendor/raylib)
 
+#add nuklear to project
+include_directories(vendor)
+
 
 add_executable(${EXECUTABLE} main.cpp app/Game.cpp)
 

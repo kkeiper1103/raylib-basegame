@@ -5,14 +5,13 @@
 #include "Game.h"
 
 Game::Game(int screenWidth, int screenHeight, const std::string &title, bool fullscreen) {
-
-
     // Initialization
     //--------------------------------------------------------------------------------------
     InitWindow(screenWidth, screenHeight, title.c_str());
 
     if(fullscreen)
         SetWindowState(FLAG_FULLSCREEN_MODE);
+
 
     SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
 }
@@ -33,6 +32,7 @@ int Game::run() {
         // TODO: Update your variables here
         //----------------------------------------------------------------------------------
 
+
         // Draw
         //----------------------------------------------------------------------------------
         BeginDrawing();
@@ -40,6 +40,8 @@ int Game::run() {
         ClearBackground(RAYWHITE);
 
         DrawText("Congrats! You created your first window!", 190, 200, 20, LIGHTGRAY);
+
+
 
         EndDrawing();
         //----------------------------------------------------------------------------------
